@@ -56,7 +56,7 @@ function download(magazine) {
 function make_pdf(magazine) {
 	var filename = magazine.document.title + '.pdf';
 	if (shell.exec('convert page_*.jpg "' + filename + '"').code !== 0) {
-	  echo('Error: PDF creation failed');
+	  console.log('Error: PDF creation failed');
 	} else {
 		shell.rm('page_*.jpg');
 	}
