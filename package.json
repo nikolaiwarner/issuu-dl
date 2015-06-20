@@ -1,7 +1,7 @@
 {
   "name": "issuu-dl",
   "version": "1.0.0",
-  "description": "",
+  "description": "a command line tool to fetch issuu publications",
   "main": "issuu-dl.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
