@@ -24,7 +24,8 @@ function fetch(url) {
 			magazine.document = doc;
 			magazine = download(magazine);
 		} else {
-			console.log("We've encountered an error: " + error);
+			console.log("Error: Failed to fetch document. " + error);
+			process.exit(1);
 		}
 	});
 	return magazine;
@@ -32,9 +33,9 @@ function fetch(url) {
 
 function download(magazine) {
 	console.log("Downloading " + magazine.document.title + "...");
-	// console.log(magazine);
+	magazine.safe_title = magazine.document.title.replace(/[^\w_]/gi,'-');
 
-	var temp_dir = 'issuu-dl-temp';
+	var temp_dir = magazine.safe_title + '-temp';
 	shell.mkdir('-p', temp_dir);
 	shell.cd(temp_dir);
 
@@ -42,24 +43,25 @@ function download(magazine) {
 		index = index + 1;
 		var url = 'http://image.issuu.com/' + magazine.document.documentId +
 				'/jpg/page_' + index +'.jpg';
-
-		// Todo: use node to do this instead:
-		shell.exec('wget -c --quiet ' + url);
+		if (shell.exec('wget -c --quiet ' + url).code !== 0) {
+			console.log('Error: Failed to download at page ' + index);
+			process.exit(1);
+		}
 		process.stdout.write(index + '/' + magazine.document.pageCount + '\r');
 	});
 
-	make_pdf(magazine);
+	magazine = make_pdf(magazine);
 	shell.exec('rmdir ' + temp_dir);
 	return magazine;
 }
 
 function make_pdf(magazine) {
-	var filename = magazine.document.title + '.pdf';
+	var filename =  magazine.safe_title + '.pdf';
 	if (shell.exec('convert page_*.jpg "' + filename + '"').code !== 0) {
 	  console.log('Error: PDF creation failed');
-	} else {
-		shell.rm('page_*.jpg');
+		process.exit(1);
 	}
+	shell.rm('page_*.jpg');
 	shell.mv(filename, '../');
 	shell.cd('..');
 	return magazine;

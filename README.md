@@ -1,7 +1,18 @@
+# issuu-dl
+
+a command line tool to fetch issuu publications
 
 ## Install
-npm install . -g
-
+```bash
+$ npm install . -g
+```
 
 ## Run
-issuu-dl "http://..."
+```bash
+$ issuu-dl "http://issuu.com/user/1234"
+```
+
+## Result
+```bash
+./publication-name.pdf
+```
