@@ -4,7 +4,7 @@ a command line tool to fetch issuu publications
 
 ## Install
 ```bash
-$ npm install . -g
+$ npm install issuu-dl -g
 ```
 
 ## Run
