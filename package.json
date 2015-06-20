@@ -1,6 +1,6 @@
 {
   "name": "issuu-dl",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "a command line tool to fetch issuu publications",
   "main": "issuu-dl.js",
   "scripts": {
