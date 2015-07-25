@@ -1,6 +1,6 @@
 {
   "name": "issuu-dl",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "a command line tool to fetch issuu publications",
   "main": "issuu-dl.js",
   "scripts": {
@@ -17,5 +17,11 @@
   },
   "bin": {
     "issuu-dl": "issuu-dl.js"
+  },
+  "homepage": "https://github.com/nikolaiwarner/issuu-dl",
+  "bugs": "https://github.com/nikolaiwarner/issuu-dl/issues",
+  "repository": {
+    "type" : "git",
+    "url" : "https://github.com/nikolaiwarner/issuu-dl.git"
   }
 }
