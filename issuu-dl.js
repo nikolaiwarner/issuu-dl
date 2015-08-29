@@ -16,7 +16,7 @@ function fetch(url) {
       var $ = cheerio.load(body);
 
       // Parse page for document data
-      var data = eval($($('script').not('script[src]').get(1)).text());
+      var data = eval($($('script').not('script[src]').get(2)).text());
       var doc = data.apiCache['/query|actionissuu.document.get_user_doc|documentusername' +
           data.documentData.ownerUsername+'|formatjson|name' +
           data.documentData.docname + '|verifystate'].document;
