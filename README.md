@@ -3,6 +3,7 @@
 a command line tool to fetch issuu publications
 
 ## Install
+Install wget and imagemagick. Then:
 ```bash
 $ npm install issuu-dl -g
 ```
